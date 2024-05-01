@@ -8,7 +8,7 @@ description = "Mmap Bytey provides a convenient and easy to use byte storage."
 readme = "../README.md"
 keywords = ["buffers", "io", "utility", "byte", "endian"]
 categories = ["data-structures", "encoding", "network-programming"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
 
 [dependencies]
 mmap_bytey_byte_buffer = { path = "../mmap_bytey_byte_buffer", version = "0.1.0" }

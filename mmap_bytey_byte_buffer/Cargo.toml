@@ -7,9 +7,11 @@ edition = "2021"
 description = "Mmap Bytey MByteBuffer code, use Mmap Bytey instead."
 keywords = ["buffers", "io", "utility", "byte", "endian"]
 categories = ["data-structures", "encoding", "network-programming"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
+authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
 
 [dependencies]
 thiserror = "1.0.56"
 mmap-rs = "0.6.1"
 intrusive-collections = "0.9.6"
+dashmap = "5.5.3"

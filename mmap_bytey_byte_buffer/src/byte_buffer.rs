@@ -1,5 +1,8 @@
 use crate::byte_buffer_write::MByteBufferWrite;
-use crate::{allocator::Buffer, byte_buffer_read::MByteBufferRead};
+use crate::{
+    allocator::{Buffer, BUFFER_SIZE},
+    byte_buffer_read::MByteBufferRead,
+};
 use std::{ptr, slice};
 
 use crate::error::{MByteBufferError, Result};
@@ -120,7 +123,7 @@ impl MByteBuffer {
     /// buffer.write_slice(&values);
     /// ```
     pub fn write_slice(&mut self, source: &[u8]) -> Result<&mut Self> {
-        if self.cursor + source.len() > 1024 {
+        if self.cursor + source.len() > BUFFER_SIZE {
             return Err(MByteBufferError::MaxCapacity);
         }
 
@@ -495,7 +498,7 @@ impl MByteBuffer {
     /// println!("{}", buffer.capacity());
     /// ```
     pub fn capacity(&self) -> usize {
-        1024
+        BUFFER_SIZE
     }
 
     /// Returns the current cursor position of the [`MByteBuffer`].

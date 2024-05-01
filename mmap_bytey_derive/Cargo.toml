@@ -7,7 +7,8 @@ edition = "2021"
 description = "Mmap Bytey derive macros, use Mmap Bytey instead"
 keywords = ["buffers", "io", "utility", "byte", "endian"]
 categories = ["data-structures", "encoding", "network-programming", "macro"]
-license = "MIT"
+license = "MIT OR Apache-2.0"
+authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
 
 [lib]
 proc-macro = true
