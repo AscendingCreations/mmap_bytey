@@ -1,0 +1,21 @@
+[package]
+name = "mmap_bytey_derive"
+homepage = "https://github.com/AscendingCreations/mmap_bytey"
+repository = "https://github.com/AscendingCreations/mmap_bytey"
+version = "0.1.0"
+edition = "2021"
+description = "Mmap Bytey derive macros, use Mmap Bytey instead"
+keywords = ["buffers", "io", "utility", "byte", "endian"]
+categories = ["data-structures", "encoding", "network-programming", "macro"]
+license = "MIT"
+
+[lib]
+proc-macro = true
+
+[dependencies]
+quote = "1.0.32"
+syn = "2.0.28"
+proc-macro2 = "1.0.66"
+
+[dev-dependencies]
+mmap_bytey = { path = "../mmap_bytey" }

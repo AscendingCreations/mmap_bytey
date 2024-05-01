@@ -1,0 +1,15 @@
+[package]
+name = "mmap_bytey_byte_buffer"
+homepage = "https://github.com/AscendingCreations/mmap_bytey"
+repository = "https://github.com/AscendingCreations/mmap_bytey"
+version = "0.1.0"
+edition = "2021"
+description = "Mmap Bytey MByteBuffer code, use Mmap Bytey instead."
+keywords = ["buffers", "io", "utility", "byte", "endian"]
+categories = ["data-structures", "encoding", "network-programming"]
+license = "MIT"
+
+[dependencies]
+thiserror = "1.0.56"
+mmap-rs = "0.6.1"
+intrusive-collections = "0.9.6"
