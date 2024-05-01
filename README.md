@@ -8,7 +8,7 @@ backend Allocator will store old buffer allocations for direct reuse. we choose 
     <a href="https://crates.io/crates/mmap_bytey" alt="Crate">
         <img src="https://img.shields.io/crates/v/mmap_bytey?style=flat-square" />
     </a>
-    <a href="https://docs.rs/bytey/latest/mmap_bytey/" alt="Docs">
+    <a href="https://docs.rs/mmap_bytey/latest/mmap_bytey/" alt="Docs">
         <img src="https://img.shields.io/docsrs/mmap_bytey?style=flat-square" />
     </a>
 </p>
