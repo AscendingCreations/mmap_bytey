@@ -1,3 +1,23 @@
 [workspace]
 resolver = "2"
-members = ["mmap_bytey", "mmap_bytey_byte_buffer", "mmap_bytey_derive"]
+members = [".", "mmap_bytey_byte_buffer", "mmap_bytey_derive"]
+
+[package]
+name = "mmap_bytey"
+homepage = "https://github.com/AscendingCreations/mmap_bytey"
+repository = "https://github.com/AscendingCreations/mmap_bytey"
+version = "0.1.2"
+edition = "2021"
+description = "Mmap Bytey provides a convenient and easy to use byte storage."
+readme = "../README.md"
+keywords = ["buffers", "io", "utility", "byte", "endian"]
+categories = ["data-structures", "encoding", "network-programming"]
+license = "MIT OR Apache-2.0"
+authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
+
+[dependencies]
+mmap_bytey_byte_buffer = { path = "mmap_bytey_byte_buffer", version = "0.1.0" }
+mmap_bytey_derive = { path = "mmap_bytey_derive", version = "0.1.0" }
+
+[workspace.dependencies]
+mmap_bytey = {version = "0.1.2"}

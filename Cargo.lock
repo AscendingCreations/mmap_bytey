@@ -164,8 +164,18 @@ dependencies = [
 name = "mmap_bytey"
 version = "0.1.2"
 dependencies = [
- "mmap_bytey_byte_buffer",
- "mmap_bytey_derive",
+ "mmap_bytey_byte_buffer 0.1.0",
+ "mmap_bytey_derive 0.1.0",
+]
+
+[[package]]
+name = "mmap_bytey"
+version = "0.1.2"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "aa529e111cca18469ab105396f7633ddace00e7d164f51454cb5e150d21e21c9"
+dependencies = [
+ "mmap_bytey_byte_buffer 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
+ "mmap_bytey_derive 0.1.0 (registry+https://github.com/rust-lang/crates.io-index)",
 ]
 
 [[package]]
@@ -179,10 +189,33 @@ dependencies = [
 ]
 
 [[package]]
+name = "mmap_bytey_byte_buffer"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "7b27665540ca2fc0c9bbeb0328f18f2502df8bd81b916360ce6879004a56b862"
+dependencies = [
+ "dashmap",
+ "intrusive-collections",
+ "mmap-rs",
+ "thiserror",
+]
+
+[[package]]
 name = "mmap_bytey_derive"
 version = "0.1.0"
 dependencies = [
- "mmap_bytey",
+ "mmap_bytey 0.1.2 (registry+https://github.com/rust-lang/crates.io-index)",
+ "proc-macro2",
+ "quote",
+ "syn",
+]
+
+[[package]]
+name = "mmap_bytey_derive"
+version = "0.1.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "1aa494ebeec0948bdc1c1e0a21fc242eddc44772b5fe33990694be181a830046"
+dependencies = [
  "proc-macro2",
  "quote",
  "syn",
