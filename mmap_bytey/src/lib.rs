@@ -1,5 +1,5 @@
 #![allow(clippy::needless_doctest_main)]
-#![doc = include_str!("../../README.md")]
+#![doc = include_str!("../../../../README.md")]
 
 #[doc(inline)]
 pub use mmap_bytey_byte_buffer::byte_buffer::MByteBuffer;

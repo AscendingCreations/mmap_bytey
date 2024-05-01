@@ -162,7 +162,7 @@ dependencies = [
 
 [[package]]
 name = "mmap_bytey"
-version = "0.1.1"
+version = "0.1.2"
 dependencies = [
  "mmap_bytey_byte_buffer",
  "mmap_bytey_derive",

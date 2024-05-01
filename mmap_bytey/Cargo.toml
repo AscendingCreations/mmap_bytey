@@ -2,7 +2,7 @@
 name = "mmap_bytey"
 homepage = "https://github.com/AscendingCreations/mmap_bytey"
 repository = "https://github.com/AscendingCreations/mmap_bytey"
-version = "0.1.1"
+version = "0.1.2"
 edition = "2021"
 description = "Mmap Bytey provides a convenient and easy to use byte storage."
 readme = "../README.md"
