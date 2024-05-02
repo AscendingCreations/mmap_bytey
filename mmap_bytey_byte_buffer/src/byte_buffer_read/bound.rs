@@ -7,7 +7,7 @@ use std::ops::Bound;
 
 impl<T: MByteBufferRead> MByteBufferRead for Bound<T> {
     #[inline]
-    fn read_from_buffer(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer(buffer: &mut MByteBuffer) -> Result<Self> {
         match buffer.read::<u8>()? {
             0 => Ok(Bound::Unbounded),
             1 => Ok(Bound::Included(buffer.read::<T>()?)),
@@ -19,7 +19,7 @@ impl<T: MByteBufferRead> MByteBufferRead for Bound<T> {
     }
 
     #[inline]
-    fn read_from_buffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
         match buffer.read_le::<u8>()? {
             0 => Ok(Bound::Unbounded),
             1 => Ok(Bound::Included(buffer.read_le::<T>()?)),
@@ -31,7 +31,7 @@ impl<T: MByteBufferRead> MByteBufferRead for Bound<T> {
     }
 
     #[inline]
-    fn read_from_buffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
         match buffer.read_be::<u8>()? {
             0 => Ok(Bound::Unbounded),
             1 => Ok(Bound::Included(buffer.read_be::<T>()?)),

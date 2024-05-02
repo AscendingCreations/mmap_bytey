@@ -7,7 +7,7 @@ use std::time::Duration;
 
 impl MByteBufferRead for Duration {
     #[inline]
-    fn read_from_buffer(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer(buffer: &mut MByteBuffer) -> Result<Self> {
         let secs = buffer.read::<u64>()?;
         let nanos = buffer.read::<u32>()?;
 
@@ -15,7 +15,7 @@ impl MByteBufferRead for Duration {
     }
 
     #[inline]
-    fn read_from_buffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
         let secs = buffer.read_le::<u64>()?;
         let nanos = buffer.read_le::<u32>()?;
 
@@ -23,7 +23,7 @@ impl MByteBufferRead for Duration {
     }
 
     #[inline]
-    fn read_from_buffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
         let secs = buffer.read_be::<u64>()?;
         let nanos = buffer.read_be::<u32>()?;
 

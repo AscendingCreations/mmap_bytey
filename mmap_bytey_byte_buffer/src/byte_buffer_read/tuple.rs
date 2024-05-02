@@ -14,7 +14,7 @@ macro_rules! tuple_impls {
             impl<$($T: MByteBufferRead),+> MByteBufferRead for ($($T,)+)
             {
                 #[inline]
-                fn read_from_buffer(buffer: &mut MByteBuffer) -> Result<Self> {
+                fn read_from_mbuffer(buffer: &mut MByteBuffer) -> Result<Self> {
                     Ok(($(match buffer.read::<$T>() {
                         Ok(v) => v,
                         Err(e) => return Err(MByteBufferError::OtherError {
@@ -24,7 +24,7 @@ macro_rules! tuple_impls {
                 }
 
                 #[inline]
-                fn read_from_buffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
+                fn read_from_mbuffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
                     Ok(($(match buffer.read_le::<$T>() {
                         Ok(v) => v,
                         Err(e) => return Err(MByteBufferError::OtherError {
@@ -34,7 +34,7 @@ macro_rules! tuple_impls {
                 }
 
                 #[inline]
-                fn read_from_buffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
+                fn read_from_mbuffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
                     Ok(($(match buffer.read_be::<$T>() {
                         Ok(v) => v,
                         Err(e) => return Err(MByteBufferError::OtherError {

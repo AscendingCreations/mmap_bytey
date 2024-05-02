@@ -2,7 +2,7 @@
 name = "mmap_bytey_byte_buffer"
 homepage = "https://github.com/AscendingCreations/mmap_bytey"
 repository = "https://github.com/AscendingCreations/mmap_bytey"
-version = "0.1.0"
+version = "0.2.0"
 edition = "2021"
 description = "Mmap Bytey MByteBuffer code, use Mmap Bytey instead."
 keywords = ["buffers", "io", "utility", "byte", "endian"]

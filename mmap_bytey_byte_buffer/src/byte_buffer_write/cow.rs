@@ -3,17 +3,17 @@ use std::borrow::Cow;
 
 impl<T: MByteBufferWrite + Clone> MByteBufferWrite for Cow<'_, T> {
     #[inline]
-    fn write_to_buffer(&self, buffer: &mut MByteBuffer) -> Result<()> {
-        self.as_ref().write_to_buffer(buffer)
+    fn write_to_mbuffer(&self, buffer: &mut MByteBuffer) -> Result<()> {
+        self.as_ref().write_to_mbuffer(buffer)
     }
 
     #[inline]
-    fn write_to_buffer_le(&self, buffer: &mut MByteBuffer) -> Result<()> {
-        self.as_ref().write_to_buffer_le(buffer)
+    fn write_to_mbuffer_le(&self, buffer: &mut MByteBuffer) -> Result<()> {
+        self.as_ref().write_to_mbuffer_le(buffer)
     }
 
     #[inline]
-    fn write_to_buffer_be(&self, buffer: &mut MByteBuffer) -> Result<()> {
-        self.as_ref().write_to_buffer_be(buffer)
+    fn write_to_mbuffer_be(&self, buffer: &mut MByteBuffer) -> Result<()> {
+        self.as_ref().write_to_mbuffer_be(buffer)
     }
 }

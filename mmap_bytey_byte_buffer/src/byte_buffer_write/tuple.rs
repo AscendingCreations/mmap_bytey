@@ -14,8 +14,8 @@ macro_rules! tuple_impls {
             impl<$($T: MByteBufferWrite),+> MByteBufferWrite for ($($T,)+)
             {
                 #[inline]
-                fn write_to_buffer(&self, buffer: &mut MByteBuffer) -> Result<()> {
-                    $(match self.$idx.write_to_buffer(buffer) {
+                fn write_to_mbuffer(&self, buffer: &mut MByteBuffer) -> Result<()> {
+                    $(match self.$idx.write_to_mbuffer(buffer) {
                         Ok(_) => {}
                         Err(e) => return Err(MByteBufferError::OtherError {
                             error: format!("{} occured at tuple write location {}", e, $idx),
@@ -25,8 +25,8 @@ macro_rules! tuple_impls {
                 }
 
                 #[inline]
-                fn write_to_buffer_le(&self, buffer: &mut MByteBuffer) -> Result<()> {
-                    $(match self.$idx.write_to_buffer_le(buffer) {
+                fn write_to_mbuffer_le(&self, buffer: &mut MByteBuffer) -> Result<()> {
+                    $(match self.$idx.write_to_mbuffer_le(buffer) {
                         Ok(_) => {}
                         Err(e) => return Err(MByteBufferError::OtherError {
                             error: format!("{} occured at tuple write location {}", e, $idx),
@@ -36,8 +36,8 @@ macro_rules! tuple_impls {
                 }
 
                 #[inline]
-                fn write_to_buffer_be(&self, buffer: &mut MByteBuffer) -> Result<()> {
-                    $(match self.$idx.write_to_buffer_be(buffer) {
+                fn write_to_mbuffer_be(&self, buffer: &mut MByteBuffer) -> Result<()> {
+                    $(match self.$idx.write_to_mbuffer_be(buffer) {
                         Ok(_) => {}
                         Err(e) => return Err(MByteBufferError::OtherError {
                             error: format!("{} occured at tuple write location {}", e, $idx),

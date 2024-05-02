@@ -31,7 +31,7 @@ impl<T, const N: usize> Drop for Guard<'_, T, N> {
 
 impl<T: MByteBufferRead + 'static, const N: usize> MByteBufferRead for [T; N] {
     #[inline]
-    fn read_from_buffer(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer(buffer: &mut MByteBuffer) -> Result<Self> {
         if N == 0 {
             return Err(MByteBufferError::OtherError {
                 error: "Can not read to an [T;0]. The array must have a size.".to_owned(),
@@ -93,7 +93,7 @@ impl<T: MByteBufferRead + 'static, const N: usize> MByteBufferRead for [T; N] {
     }
 
     #[inline]
-    fn read_from_buffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
         if N == 0 {
             return Err(MByteBufferError::OtherError {
                 error: "Can not read to an [T;0]. The array must have a size.".to_owned(),
@@ -155,7 +155,7 @@ impl<T: MByteBufferRead + 'static, const N: usize> MByteBufferRead for [T; N] {
     }
 
     #[inline]
-    fn read_from_buffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
         if N == 0 {
             return Err(MByteBufferError::OtherError {
                 error: "Can not read to an [T;0]. The array must have a size.".to_owned(),
@@ -219,7 +219,7 @@ impl<T: MByteBufferRead + 'static, const N: usize> MByteBufferRead for [T; N] {
 
 impl<T: MByteBufferRead> MByteBufferRead for Vec<T> {
     #[inline]
-    fn read_from_buffer(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer(buffer: &mut MByteBuffer) -> Result<Self> {
         let size = buffer.read::<u64>()? as usize;
 
         if size == 0 {
@@ -236,7 +236,7 @@ impl<T: MByteBufferRead> MByteBufferRead for Vec<T> {
     }
 
     #[inline]
-    fn read_from_buffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_le(buffer: &mut MByteBuffer) -> Result<Self> {
         let size = buffer.read_le::<u64>()? as usize;
 
         if size == 0 {
@@ -253,7 +253,7 @@ impl<T: MByteBufferRead> MByteBufferRead for Vec<T> {
     }
 
     #[inline]
-    fn read_from_buffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
+    fn read_from_mbuffer_be(buffer: &mut MByteBuffer) -> Result<Self> {
         let size = buffer.read_be::<u64>()? as usize;
 
         if size == 0 {

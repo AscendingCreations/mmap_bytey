@@ -144,17 +144,17 @@ fn handle_struct(input: StructSource) -> proc_macro2::TokenStream {
     quote! {
         impl #impl_generics ::mmap_bytey::MByteBufferRead for #struct_ident #ty_generics #where_clause {
             #[inline]
-            fn read_from_buffer(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
+            fn read_from_mbuffer(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
                 Ok(#init_struct_native)
             }
 
             #[inline]
-            fn read_from_buffer_le(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
+            fn read_from_mbuffer_le(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
                 Ok(#init_struct_le)
             }
 
             #[inline]
-            fn read_from_buffer_be(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
+            fn read_from_mbuffer_be(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#struct_ident #ty_generics> {
                 Ok(#init_struct_be)
             }
         }
@@ -259,7 +259,7 @@ fn handle_enum(input: EnumSource) -> proc_macro2::TokenStream {
     quote! {
         impl #impl_generics ::mmap_bytey::MByteBufferRead for #enum_ident #ty_generics #where_clause {
             #[inline]
-            fn read_from_buffer(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
+            fn read_from_mbuffer(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
                 match buffer.read::<u16>()? {
                     #(#match_arms_native,)*
                     id => Err(::mmap_bytey::MByteBufferError::OtherError { error: ::std::format!("Invalid id: {}", id) })
@@ -267,7 +267,7 @@ fn handle_enum(input: EnumSource) -> proc_macro2::TokenStream {
             }
 
             #[inline]
-            fn read_from_buffer_le(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
+            fn read_from_mbuffer_le(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
                 match buffer.read::<u16>()? {
                     #(#match_arms_le,)*
                     id => Err(::mmap_bytey::MByteBufferError::OtherError { error: ::std::format!("Invalid id: {}", id) })
@@ -275,7 +275,7 @@ fn handle_enum(input: EnumSource) -> proc_macro2::TokenStream {
             }
 
             #[inline]
-            fn read_from_buffer_be(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
+            fn read_from_mbuffer_be(buffer: &mut ::mmap_bytey::MByteBuffer) -> ::mmap_bytey::Result<#enum_ident #ty_generics> {
                 match buffer.read::<u16>()? {
                     #(#match_arms_be,)*
                     id => Err(::mmap_bytey::MByteBufferError::OtherError { error: ::std::format!("Invalid id: {}", id) })

@@ -155,7 +155,7 @@ impl MByteBuffer {
     /// buffer.write(&value);
     /// ```
     pub fn write<T: MByteBufferWrite>(&mut self, source: T) -> Result<&mut Self> {
-        source.write_to_buffer(self)?;
+        source.write_to_mbuffer(self)?;
 
         Ok(self)
     }
@@ -177,7 +177,7 @@ impl MByteBuffer {
     /// buffer.write_le(&value);
     /// ```
     pub fn write_le<T: MByteBufferWrite>(&mut self, source: T) -> Result<&mut Self> {
-        source.write_to_buffer_le(self)?;
+        source.write_to_mbuffer_le(self)?;
 
         Ok(self)
     }
@@ -199,7 +199,7 @@ impl MByteBuffer {
     /// buffer.write_be(&value);
     /// ```
     pub fn write_be<T: MByteBufferWrite>(&mut self, source: T) -> Result<&mut Self> {
-        source.write_to_buffer_be(self)?;
+        source.write_to_mbuffer_be(self)?;
 
         Ok(self)
     }
@@ -289,7 +289,7 @@ impl MByteBuffer {
     /// let x: u32 = buffer.read().unwrap();
     /// ```
     pub fn read<T: MByteBufferRead>(&mut self) -> Result<T> {
-        T::read_from_buffer(self)
+        T::read_from_mbuffer(self)
     }
 
     /// Reads a value of type T that implements the [`ByteBufferRead`] trait from the buffer in **little endian** ordering.
@@ -313,7 +313,7 @@ impl MByteBuffer {
     /// let x: u32 = buffer.read_le().unwrap();
     /// ```
     pub fn read_le<T: MByteBufferRead>(&mut self) -> Result<T> {
-        T::read_from_buffer_le(self)
+        T::read_from_mbuffer_le(self)
     }
 
     /// Reads a value of type T that implements the [`ByteBufferRead`] trait from the buffer in **big endian** ordering.
@@ -337,7 +337,7 @@ impl MByteBuffer {
     /// let x: u32 = buffer.read_be().unwrap();
     /// ```
     pub fn read_be<T: MByteBufferRead>(&mut self) -> Result<T> {
-        T::read_from_buffer_be(self)
+        T::read_from_mbuffer_be(self)
     }
 
     /// Moves the current cursor position **without safety checks**.
