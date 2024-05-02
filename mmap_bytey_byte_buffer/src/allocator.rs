@@ -45,7 +45,7 @@ thread_local! {
 static MAILBOX: OnceLock<DashMap<std::thread::ThreadId, List>> = OnceLock::new();
 
 fn get_mailbox<'a>() -> &'a DashMap<std::thread::ThreadId, List> {
-    MAILBOX.get_or_init(|| DashMap::new())
+    MAILBOX.get_or_init(DashMap::new)
 }
 
 /// The allocated mmap buffer. This carries over its threadID just in case you do happen
@@ -161,21 +161,19 @@ impl Drop for Buffer {
 
         if self.thread_id == thread_id {
             FREE_LIST.with_borrow_mut(|free_list| free_list.list.push_front(node));
+        } else if let Some(mut list) = get_mailbox().get_mut(&thread_id) {
+            list.list.push_front(node);
         } else {
-            if let Some(mut list) = get_mailbox().get_mut(&thread_id) {
-                list.list.push_front(node);
-            } else {
-                let mut list = List::new();
-                list.list.push_front(node);
+            let mut list = List::new();
+            list.list.push_front(node);
 
-                // Set up the list for the thread ID if there is none set up yet.
-                if let Some(mut old_list) = get_mailbox().insert(thread_id, list) {
-                    // In case we override an existing list, we simply push the nodes of the old
-                    // list onto the new list.
-                    if let Some(mut list) = get_mailbox().get_mut(&thread_id) {
-                        while let Some(node) = old_list.list.pop_front() {
-                            list.list.push_front(node);
-                        }
+            // Set up the list for the thread ID if there is none set up yet.
+            if let Some(mut old_list) = get_mailbox().insert(thread_id, list) {
+                // In case we override an existing list, we simply push the nodes of the old
+                // list onto the new list.
+                if let Some(mut list) = get_mailbox().get_mut(&thread_id) {
+                    while let Some(node) = old_list.list.pop_front() {
+                        list.list.push_front(node);
                     }
                 }
             }
