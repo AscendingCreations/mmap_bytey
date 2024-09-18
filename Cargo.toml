@@ -16,7 +16,7 @@ license = "MIT OR Apache-2.0"
 authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
 
 [dependencies]
-mmap_bytey_byte_buffer = { path = "mmap_bytey_byte_buffer", version = "0.2.0" }
+mmap_bytey_byte_buffer = { path = "mmap_bytey_byte_buffer", version = "0.2.2" }
 mmap_bytey_derive = { path = "mmap_bytey_derive", version = "0.2.0" }
 
 [workspace.dependencies]
