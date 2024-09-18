@@ -217,6 +217,20 @@ impl AsMut<[u8]> for Buffer {
     }
 }
 
+impl Clone for Buffer {
+    fn clone(&self) -> Self {
+        let mut buffer = Buffer::new().unwrap();
+
+        buffer[..].copy_from_slice(&self[..]);
+
+        buffer
+    }
+
+    fn clone_from(&mut self, source: &Self) {
+        self.copy_from_slice(&source[..]);
+    }
+}
+
 /// The node in the mmap list to stored our buffers for reuse.
 pub struct Node {
     link: SinglyLinkedListLink,

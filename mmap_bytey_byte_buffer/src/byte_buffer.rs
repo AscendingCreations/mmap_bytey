@@ -105,12 +105,12 @@ impl MByteBuffer {
     ///
     /// # Behaviour
     /// - If the result of the **current cursor position + length of the slice** exceeds the capacity of the buffer,
-    /// the buffer will resize to the next power of two that fits the result.
+    ///   the buffer will resize to the next power of two that fits the result.
     /// - The current cursor position will be increased by the length of the slice.
     ///
     /// # Errors
     /// - [`MByteBufferError::MaxCapacity`] is returned if the buffer has to resize to a capacity larger than [`MAX_SIZE`](Self::MAX_SIZE)
-    /// or if the resulting capacity overflows.
+    ///   or if the resulting capacity overflows.
     /// - [`MByteBufferError::AllocationFailure`] is returned if the memory allocation failed due to any reason(see [`alloc::realloc`]).
     ///
     /// # Examples
@@ -632,6 +632,7 @@ impl MByteBuffer {
         Ok(unsafe { self.read_slice_unchecked(size) })
     }
 
+    /// A Panicless Clone that returns a Error instead.
     pub fn try_clone(&self) -> Result<Self> {
         let mut buffer = Buffer::new()?;
 
@@ -642,5 +643,21 @@ impl MByteBuffer {
             cursor: self.cursor,
             buffer,
         })
+    }
+}
+
+impl Clone for MByteBuffer {
+    fn clone(&self) -> Self {
+        Self {
+            length: self.length,
+            cursor: self.cursor,
+            buffer: self.buffer.clone(),
+        }
+    }
+
+    fn clone_from(&mut self, source: &Self) {
+        self.length = source.length;
+        self.cursor = source.cursor;
+        self.buffer.copy_from_slice(&source.buffer[..]);
     }
 }

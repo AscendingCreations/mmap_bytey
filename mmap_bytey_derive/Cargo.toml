@@ -14,9 +14,9 @@ authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "
 proc-macro = true
 
 [dependencies]
-quote = "1.0.32"
-syn = "2.0.28"
-proc-macro2 = "1.0.66"
+quote = "1.0.37"
+syn = "2.0.77"
+proc-macro2 = "1.0.86"
 
 [dev-dependencies]
 mmap_bytey.workspace = true
