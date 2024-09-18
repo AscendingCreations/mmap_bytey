@@ -24,7 +24,7 @@ If you need help with this library or have suggestions please go to our [Discord
 To start using this crate all you have to do is add it to your ``Cargo.toml``:
 ```toml
 [dependencies]
-mmap_bytey = "0.2.1"
+mmap_bytey = "0.2.0"
 ```
 
 # 🔎 Usage
