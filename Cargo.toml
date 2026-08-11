@@ -6,7 +6,7 @@ members = [".", "mmap_bytey_byte_buffer", "mmap_bytey_derive"]
 name = "mmap_bytey"
 homepage = "https://github.com/AscendingCreations/mmap_bytey"
 repository = "https://github.com/AscendingCreations/mmap_bytey"
-version = "0.2.0"
+version = "0.3.0"
 edition = "2024"
 description = "Mmap Bytey provides a convenient and easy to use byte storage."
 readme = "README.md"
@@ -17,8 +17,8 @@ authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "
 rust-version = "1.94"
 
 [dependencies]
-mmap_bytey_byte_buffer = { path = "mmap_bytey_byte_buffer", version = "0.2.2" }
-mmap_bytey_derive = { path = "mmap_bytey_derive", version = "0.2.0" }
+mmap_bytey_byte_buffer = { path = "mmap_bytey_byte_buffer", version = "0.3.0" }
+mmap_bytey_derive = { path = "mmap_bytey_derive", version = "0.3.0" }
 
 [workspace.dependencies]
-mmap_bytey = { path = ".", version = "0.2.0"}
+mmap_bytey = { path = ".", version = "0.3.0"}
