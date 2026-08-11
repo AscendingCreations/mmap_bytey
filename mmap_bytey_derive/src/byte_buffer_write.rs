@@ -125,9 +125,8 @@ fn handle_enum(input: EnumSource) -> proc_macro2::TokenStream {
     let mut variants_native: Vec<proc_macro2::TokenStream> = Vec::new();
     let mut variants_le: Vec<proc_macro2::TokenStream> = Vec::new();
     let mut variants_be: Vec<proc_macro2::TokenStream> = Vec::new();
-    let mut id: u16 = 1;
 
-    for variant in &input.variants {
+    for (id, variant) in (1_u16..).zip(input.variants.iter()) {
         let mut field_idents: Vec<syn::Ident> = Vec::new();
         let variant_ident = variant.ident;
 
@@ -172,8 +171,6 @@ fn handle_enum(input: EnumSource) -> proc_macro2::TokenStream {
                 #(#field_idents.write_to_mbuffer_be(buffer)?;)*
             }
         });
-
-        id += 1;
     }
 
     let (impl_generics, ty_generics, where_clause) = input.generics.split_for_impl();

@@ -1,6 +1,6 @@
 use crate::byte_buffer_write::MByteBufferWrite;
 use crate::{
-    allocator::{Buffer, BUFFER_SIZE},
+    allocator::{BUFFER_SIZE, Buffer},
     byte_buffer_read::MByteBufferRead,
 };
 use std::{ptr, slice};
@@ -91,11 +91,13 @@ impl MByteBuffer {
     pub unsafe fn write_slice_unchecked(&mut self, source: &[u8]) -> &mut Self {
         let source_length = source.len();
 
-        ptr::copy_nonoverlapping(
-            source.as_ptr(),
-            self.buffer.as_mut().as_mut_ptr().add(self.cursor),
-            source_length,
-        );
+        unsafe {
+            ptr::copy_nonoverlapping(
+                source.as_ptr(),
+                self.buffer.as_mut().as_mut_ptr().add(self.cursor),
+                source_length,
+            )
+        };
         self.cursor += source.len();
 
         self
@@ -230,7 +232,8 @@ impl MByteBuffer {
     /// }
     ///```
     pub unsafe fn read_slice_unchecked(&mut self, size: usize) -> &[u8] {
-        let ret = slice::from_raw_parts(self.buffer.as_ref().as_ptr().add(self.cursor), size);
+        let ret =
+            unsafe { slice::from_raw_parts(self.buffer.as_ref().as_ptr().add(self.cursor), size) };
         self.cursor += size;
 
         ret

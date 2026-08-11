@@ -3,15 +3,16 @@ name = "mmap_bytey_byte_buffer"
 homepage = "https://github.com/AscendingCreations/mmap_bytey"
 repository = "https://github.com/AscendingCreations/mmap_bytey"
 version = "0.2.2"
-edition = "2021"
+edition = "2024"
 description = "Mmap Bytey MByteBuffer code, use Mmap Bytey instead."
 keywords = ["buffers", "io", "utility", "byte", "endian"]
 categories = ["data-structures", "encoding", "network-programming"]
 license = "MIT OR Apache-2.0"
 authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
+rust-version = "1.94"
 
 [dependencies]
-thiserror = "1.0.63"
-mmap-rs = "0.6.1"
-intrusive-collections = "0.9.7"
-dashmap = "6.1.0"
+thiserror = "2.0.20"
+mmap-rs = "0.7.0"
+intrusive-collections = "0.10.3"
+dashmap = "6.2.1"

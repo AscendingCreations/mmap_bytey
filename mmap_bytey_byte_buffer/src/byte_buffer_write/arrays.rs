@@ -70,7 +70,7 @@ impl<T: MByteBufferWrite> MByteBufferWrite for [T] {
     }
 }
 
-impl<'a, T: MByteBufferWrite> MByteBufferWrite for &'a [T] {
+impl<T: MByteBufferWrite> MByteBufferWrite for &[T] {
     #[inline]
     fn write_to_mbuffer(&self, buffer: &mut MByteBuffer) -> Result<()> {
         (self.len() as u64).write_to_mbuffer(buffer)?;

@@ -16,7 +16,7 @@ pub struct EnumVariant<'a> {
 }
 
 impl StructSource<'_> {
-    pub fn from_input(input: &syn::DeriveInput) -> StructSource {
+    pub fn from_input(input: &syn::DeriveInput) -> StructSource<'_> {
         let ident = &input.ident;
         let fields = match &input.data {
             syn::Data::Struct(data) => &data.fields,
@@ -33,7 +33,7 @@ impl StructSource<'_> {
 }
 
 impl EnumSource<'_> {
-    pub fn from_input(input: &syn::DeriveInput) -> EnumSource {
+    pub fn from_input(input: &syn::DeriveInput) -> EnumSource<'_> {
         let ident = &input.ident;
         let mut vars: Vec<EnumVariant> = Vec::new();
         let generics = &input.generics;

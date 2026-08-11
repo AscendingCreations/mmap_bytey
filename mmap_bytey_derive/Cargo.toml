@@ -3,20 +3,21 @@ name = "mmap_bytey_derive"
 homepage = "https://github.com/AscendingCreations/mmap_bytey"
 repository = "https://github.com/AscendingCreations/mmap_bytey"
 version = "0.2.0"
-edition = "2021"
+edition = "2024"
 description = "Mmap Bytey derive macros, use Mmap Bytey instead"
 keywords = ["buffers", "io", "utility", "byte", "endian"]
 categories = ["data-structures", "encoding", "network-programming", "macro"]
 license = "MIT OR Apache-2.0"
 authors = ["S.J.R. van Schaik", "Andrew Wheeler <genusistimelord@outlook.com", "Stefano"]
+rust-version = "1.94"
 
 [lib]
 proc-macro = true
 
 [dependencies]
-quote = "1.0.37"
-syn = "2.0.77"
-proc-macro2 = "1.0.86"
+quote = "1.0.47"
+syn = "3.0.3"
+proc-macro2 = "1.0.107"
 
 [dev-dependencies]
 mmap_bytey.workspace = true

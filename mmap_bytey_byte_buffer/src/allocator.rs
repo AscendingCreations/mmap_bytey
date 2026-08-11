@@ -239,4 +239,4 @@ pub struct Node {
     offset: usize,
 }
 
-intrusive_adapter!(Adapter = UnsafeRef<Node>: Node { link: SinglyLinkedListLink });
+intrusive_adapter!(Adapter = UnsafeRef<Node>: Node { link => SinglyLinkedListLink });
